@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import css from '../Modal/Modal.module.css';
 import { TfiClose } from "react-icons/tfi";
 

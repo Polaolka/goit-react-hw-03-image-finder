@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import css from '../Searchbar/Searchbar.module.css';
 import { FcSearch } from 'react-icons/fc';
 import { IconContext } from "react-icons";
