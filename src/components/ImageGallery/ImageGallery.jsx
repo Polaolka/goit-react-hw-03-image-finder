@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
 
 import css from '../ImageGallery/ImageGallery.module.css';
@@ -30,4 +30,18 @@ export class ImageGallery extends Component {
       </div>
     );
   }
+}
+
+
+ImageGallery.propTypes = {
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired, 
+      webformatURL: PropTypes.string.isRequired, 
+      largeImageURL: PropTypes.string.isRequired, 
+      tags: PropTypes.string.isRequired,
+    })
+  ),
+  isImagesLoaded: PropTypes.bool.isRequired,
+  onClickImg: PropTypes.func.isRequired,
 }

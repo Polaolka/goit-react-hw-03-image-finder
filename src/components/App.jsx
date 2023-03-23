@@ -8,8 +8,7 @@ import { Loader } from '../components/Loader/Loader';
 import { getImages } from '../components/Api/Api';
 import { LoadMoreBtn } from '../components/Button/Button';
 import { Container } from '../components/Container/Container';
-
-
+import css from './App.module.css'
 
 export class App extends Component {
   state = {
@@ -44,7 +43,6 @@ export class App extends Component {
       try {
         this.setState({ isImagesLoading: true });
         const response = await getImages(this.state.query, this.state.page);
-        console.log(response);
         this.setState({
           total: response.totalImg,
           isImagesLoading: false,
@@ -79,8 +77,7 @@ export class App extends Component {
   };
 
   handleOpenModal = (e) => {
-    if(e.target.nodeName === 'IMG')
-    console.log(e.target.nodeName === 'IMG');
+    if(e.target.nodeName === 'IMG');
     {const openImg = e.target.getAttribute("data-modal");
     this.setState({
       largeImageURL: openImg})
@@ -100,7 +97,7 @@ export class App extends Component {
           <ImageGallery images={images} 
           onClickImg={this.handleOpenModal}/>
         ) : (
-          <p>so far it's empty...</p>
+          <p className={css.empty}>so far it's empty...</p>
         )}
         {isImagesLoading && <Loader />}
         {total > 0 && page < totalPage && (

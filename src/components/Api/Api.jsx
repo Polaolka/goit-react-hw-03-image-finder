@@ -15,7 +15,6 @@ export async function getImages(query, page) {
     const response = await axios.get(`${url}`, {
       params: PARAMS,
     });
-    console.log(response);
     const totalImg = response.data.totalHits;
     const images = response.data.hits;
     const totalPage = Math.ceil(response.data.totalHits / PARAMS.per_page);

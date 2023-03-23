@@ -1,5 +1,6 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+
 import css from '../Button/LoadMoreButton.module.css';
 
 
@@ -12,3 +13,6 @@ export const LoadMoreBtn = ({onloadMore}) => {
   );
 }
 
+LoadMoreBtn.propTypes = {
+  onloadMore:PropTypes.func,
+}
