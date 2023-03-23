@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { BsArrowUp } from 'react-icons/bs';
 import { Modal } from '../components/Modal/Modal';
 import { ImageGallery } from '../components/ImageGallery/ImageGallery';
 import { Searchbar } from '../components/Searchbar/Searchbar';
@@ -22,6 +23,7 @@ export class App extends Component {
     totalPage: 0,
     showLoadMore: false,
     largeImageURL: '',
+    openImgTags: '',
   };
 
   handleFormSubmit = searchQuery => {
@@ -79,14 +81,18 @@ export class App extends Component {
   handleOpenModal = (e) => {
     if(e.target.nodeName === 'IMG');
     {const openImg = e.target.getAttribute("data-modal");
+    const openImgDescr = e.target.getAttribute("data-tags");
     this.setState({
-      largeImageURL: openImg})
+      largeImageURL: openImg, 
+      openImgTags: openImgDescr})
     this.toggleModal();
+
+
     }
   }
 
   render() {
-    const { images, showModal, total, isImagesLoading, page, totalPage, largeImageURL } =
+    const { images, showModal, total, isImagesLoading, page, totalPage, largeImageURL, openImgTags } =
       this.state;
 
     return (
@@ -97,13 +103,13 @@ export class App extends Component {
           <ImageGallery images={images} 
           onClickImg={this.handleOpenModal}/>
         ) : (
-          <p className={css.empty}>so far it's empty...</p>
+          <p className={css.empty}>So far it's empty, start searching <BsArrowUp/></p>
         )}
         {isImagesLoading && <Loader />}
         {total > 0 && page < totalPage && (
           <LoadMoreBtn onloadMore={this.handleLoadMore} />
         )}
-        {showModal && <Modal onClose={this.toggleModal} largeImageURL={largeImageURL}/>}
+        {showModal && <Modal onClose={this.toggleModal} largeImageURL={largeImageURL} openImgTags={openImgTags}/>}
         </Container>
         <ToastContainer autoClose={2500}/>
       </div>

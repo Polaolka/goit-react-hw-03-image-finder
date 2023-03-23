@@ -36,12 +36,12 @@ export class ImageGallery extends Component {
 ImageGallery.propTypes = {
   images: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired, 
+      id: PropTypes.number.isRequired, 
       webformatURL: PropTypes.string.isRequired, 
       largeImageURL: PropTypes.string.isRequired, 
-      tags: PropTypes.string.isRequired,
+      tags: PropTypes.string,
     })
   ),
-  isImagesLoaded: PropTypes.bool.isRequired,
+  isImagesLoaded: PropTypes.bool,
   onClickImg: PropTypes.func.isRequired,
 }

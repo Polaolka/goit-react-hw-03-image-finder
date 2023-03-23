@@ -36,3 +36,13 @@
     max-height: 75vh;
     object-fit: cover;
 }
+
+.tagsBox {
+    width: 100%;
+    padding: 4px 10px 8px;
+
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+}

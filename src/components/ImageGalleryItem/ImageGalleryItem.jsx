@@ -12,6 +12,7 @@ export class ImageGalleryItem extends Component {
           src={webformatURL}
           alt={tags}
           data-modal={largeImageURL}
+          data-tags={tags}
         />
       </li>
     );
@@ -19,10 +20,10 @@ export class ImageGalleryItem extends Component {
 }
 
 ImageGalleryItem.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   webformatURL: PropTypes.string.isRequired,
   largeImageURL: PropTypes.string.isRequired,
-  tags: PropTypes.string.isRequired,
-  isImagesLoaded: PropTypes.bool.isRequired,
+  tags: PropTypes.string,
+  isImagesLoaded: PropTypes.bool,
   onClickImg: PropTypes.func.isRequired,
 };

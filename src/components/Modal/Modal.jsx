@@ -15,8 +15,10 @@ export class Modal extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('keydown', this.handleKeyDown);
+    const scrollY = document.body.style.top;
     document.body.style.position = '';
     document.body.style.top = '';
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
   }
 
   handleKeyDown = e => {
@@ -28,11 +30,11 @@ export class Modal extends Component {
   };
 
   render() {
-    const { onClose, largeImageURL, tags } = this.props;
+    const { onClose, largeImageURL, openImgTags } = this.props;
     return createPortal(
       <div className={css.overlay} onClick={this.handleBackdropClick}>
         <div className={css.modal}>
-        <img src={largeImageURL} alt={tags} className={css.largeImage} />
+          <img src={largeImageURL} alt={openImgTags} className={css.largeImage} />
           <button
             type="button"
             className={css.btnClose}
@@ -41,6 +43,7 @@ export class Modal extends Component {
           >
             <TfiClose />
           </button>
+          <div className={css.tagsBox}>{openImgTags}</div>
         </div>
       </div>,
       modalRoot
@@ -51,5 +54,5 @@ export class Modal extends Component {
 Modal.propTypes = {
   onClose: PropTypes.func.isRequired,
   largeImageURL: PropTypes.string.isRequired,
-  tags: PropTypes.string.isRequired,
+  tags: PropTypes.string,
 };
