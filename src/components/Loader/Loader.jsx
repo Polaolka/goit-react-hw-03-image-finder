@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { ColorRing } from 'react-loader-spinner';
 import css from '../Loader/Loader.module.css';
 
-export class Loader extends Component {
-  render() {
-    return (
-      <div className={css.loaderWrapper}>
+export const Loader = () => {
+  return (
+<div className={css.loaderWrapper}>
         <ColorRing
           margin="0 auto"
           visible={true}
@@ -17,6 +16,6 @@ export class Loader extends Component {
           colors={['#b8c480', '#B2A3B5', '#F4442E', '#51E5FF', '#429EA6']}
         />
       </div>
-    );
-  }
-}
+  );
+};
+

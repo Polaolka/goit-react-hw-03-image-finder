@@ -42,17 +42,15 @@ export class App extends Component {
       prevState.query !== this.state.query ||
       prevState.page !== this.state.page
     ) {
-      try {
-        this.setState({ isImagesLoading: true });
+      this.setState({ isImagesLoading: true });
         const response = await getImages(this.state.query, this.state.page);
-        this.setState({
+        this.setState(prevState => ({
+          images: [...prevState.images, ...response.images],
           total: response.totalImg,
           isImagesLoading: false,
           totalPage: response.totalPage,
-        });
-        this.setState(prevState => ({
-          images: [...prevState.images, ...response.images],
         }));
+        
         if (response.images.length === 0) toast('No images found');
 
         if (response.images.length > 0 && this.state.page === 1)
@@ -60,9 +58,6 @@ export class App extends Component {
 
         if (this.state.page === response.totalPage && response.totalPage > 1)
           toast(`this is the last page`);
-      } catch (error) {
-        alert(error.message);
-      }
     }
   }
 
